@@ -4,23 +4,13 @@ services:
       context: https://github.com/Oasis256/garget-register-export.git#master:source
       dockerfile: Dockerfile
     image: oasis256/garget-register-export:latest
+    env_file:
+      - .env
     ports:
       - "3000:3000"
     environment:
       NODE_ENV: production
-      PORT: 3000
-      DATABASE_URL: mysql://app_user:app_password@db:3306/reg
-      JWT_SECRET: change-me-in-production
-      FLUTTERWAVE_SECRET_KEY: ${FLUTTERWAVE_SECRET_KEY:-}
-      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
-      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
-      GOOGLE_REDIRECT_URI: ${GOOGLE_REDIRECT_URI:-}
-      OAUTH_SERVER_URL: ${OAUTH_SERVER_URL:-https://oauth.manus.computer}
-      VITE_OAUTH_PORTAL_URL: ${VITE_OAUTH_PORTAL_URL:-https://portal.manus.computer}
-      BUILT_IN_FORGE_API_KEY: ${BUILT_IN_FORGE_API_KEY:-}
-      BUILT_IN_FORGE_API_URL: ${BUILT_IN_FORGE_API_URL:-https://api.manus.computer}
-      VITE_FRONTEND_FORGE_API_KEY: ${VITE_FRONTEND_FORGE_API_KEY:-}
-      VITE_FRONTEND_FORGE_API_URL: ${VITE_FRONTEND_FORGE_API_URL:-https://api.manus.computer}
+      PORT: ${PORT:-3000}
     depends_on:
       db:
         condition: service_healthy
