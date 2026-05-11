@@ -25,6 +25,7 @@ services:
       MYSQL_ROOT_PASSWORD: root_password
     volumes:
       - mysql_data:/var/lib/mysql
+      - ./garget-register-db-export.sql:/docker-entrypoint-initdb.d/01-garget-register-db-export.sql:ro
     ports:
       - "3306:3306"
     healthcheck:
