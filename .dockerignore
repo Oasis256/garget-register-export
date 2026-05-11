@@ -1,0 +1,12 @@
+node_modules
+pnpm-debug.log*
+npm-debug.log*
+.git
+.gitignore
+.env
+.env.*
+.manus-logs
+dist
+coverage
+.vscode
+.idea
